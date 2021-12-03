@@ -23,6 +23,9 @@ const Button = styled.button`
   font-weight: bold;
   padding: 8px 16px;
 
+  animation: sliding 4s ease-in-out;
+  transition: transform .3s ease-in-out;
+
   &::after {
     transition: all 0.3s;
   }
@@ -37,6 +40,7 @@ const Button = styled.button`
 
   &:hover {
     color: #121d3d;
+    transform: translate(0, -8px);
   }
 
   &::after {
@@ -49,6 +53,24 @@ const Button = styled.button`
   &:hover::after {
     height: 100%;
   }
+
+  @keyframes sliding {
+  0% {
+    transform: translate(0, 200px);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(0, 200px);
+    opacity: 0;
+  }
+  70% {
+    transform: translate(0, -8px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0px);
+  }
+}
 `;
 
 const words = "Terraforming Mars Record";
