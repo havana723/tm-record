@@ -7,10 +7,16 @@ import logo from "./logo.svg";
 import tfm from "./img/Terraforming-Mars_1.png";
 import useShadowLightCoordinates from "./hooks/ShadowLightCoordinates";
 
+const Page = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 5vh;
+`;
+
 const Main = styled.div`
   color: white;
-  margin-top: 50vh;
-  transform: translateY(-50%);
+  padding-right: 32px;
 `;
 
 const Button = styled.button`
@@ -24,7 +30,7 @@ const Button = styled.button`
   padding: 8px 16px;
 
   animation: sliding 4s ease-in-out;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 
   &::after {
     transition: all 0.3s;
@@ -55,25 +61,43 @@ const Button = styled.button`
   }
 
   @keyframes sliding {
-  0% {
-    transform: translate(0, 200px);
-    opacity: 0;
+    0% {
+      transform: translate(0, 200px);
+      opacity: 0;
+    }
+    30% {
+      transform: translate(0, 200px);
+      opacity: 0;
+    }
+    70% {
+      transform: translate(0, -8px);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, 0px);
+    }
   }
-  30% {
-    transform: translate(0, 200px);
-    opacity: 0;
-  }
-  70% {
-    transform: translate(0, -8px);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(0, 0px);
-  }
-}
 `;
 
-const words = "Terraforming Mars Record";
+const RecIcon = styled.span`
+  display: inline-block;
+  margin-right: 8px;
+
+  color: red;
+  animation: blink 0.8s alternate infinite;
+
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
+const words = "테라포밍 마스 전적 기록";
+const wordsub = "화성을 개척하는 쿠안들을 위한 안내서";
 
 function App() {
   const [index, setIndex] = useState(0);
@@ -116,7 +140,14 @@ function App() {
           backgroundSize: "cover",
         }}
       >
-        <div className="Sparkle" style={{ width: "100%", height: "100%" }}>
+        <div
+          className="Sparkle"
+          style={{
+            width: "100%",
+            height: "100%",
+            transform: `translate(${shadowX * 0.7}em, ${shadowY * 0.7}em)`,
+          }}
+        >
           <Sparkles
             color={"#a0e0ff"}
             count={70}
@@ -140,28 +171,51 @@ function App() {
           alt="image of mars"
         />
       </div>
-      <Contents>
-        <Main>
-          <h1>
-            {words.substring(0, index)}
-            <span style={{ display: "inline-block", width: 0 }}>
-              {blink ? "|" : ""}
-            </span>
-          </h1>
-          <Button>개척하기</Button>
-        </Main>
-      </Contents>
-      <small
-        style={{
-          position: "absolute",
-          bottom: 32,
-          right: 32,
-          color: "white",
-          opacity: 0.4,
-        }}
-      >
-        Image by Tumisu on Pixabay.
-      </small>
+
+      <Page>
+        <div
+          style={{
+            border: "2px solid white",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Contents>
+            <Main>
+              <p>화성을 개척하는 쿠안들을 위한 안내서</p>
+              <h1>
+                {words.substring(0, index)}
+                <span style={{ display: "inline-block", width: 0 }}>
+                  {blink ? "|" : ""}
+                </span>
+              </h1>
+              <Button>관측하기</Button>
+            </Main>
+          </Contents>
+          <small
+            style={{
+              position: "absolute",
+              bottom: 32,
+              right: 32,
+              color: "white",
+              opacity: 0.2,
+            }}
+          >
+            Image by Tumisu on Pixabay.
+          </small>
+        </div>
+        <h3
+          style={{
+            color: "white",
+            position: "absolute",
+            right: "9vh",
+            top: "7vh",
+          }}
+        >
+          <RecIcon> ● </RecIcon> CAM 1
+        </h3>
+      </Page>
     </>
   );
 }

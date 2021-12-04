@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: 'Pretendard-Regular', sans-serif;
   -webkit-font-smoothing: antialiased;
