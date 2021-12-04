@@ -23,11 +23,11 @@ const GridContainer = styled.div`
   @keyframes sweep {
     0% {
       transform: translate(0, 0);
-      filter: sepia(1) saturate(400%) hue-rotate(-180deg);
+      filter: sepia(1) saturate(400%);
     }
     100% {
       transform: translate(800%, 0);
-      filter: sepia(1) saturate(400%) hue-rotate(2000deg);
+      filter: sepia(1) saturate(400%);
     }
   }
 
