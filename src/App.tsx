@@ -4,8 +4,11 @@ import styled from "styled-components";
 import { Contents } from "./components/Contents";
 import Sparkles from "react-sparkle";
 import logo from "./logo.svg";
-import tfm from "./img/Terraforming-Mars_1.png";
+import TypewriterWord from "./components/TypewriterWord";
+import Mars from "./components/Mars";
 import useShadowLightCoordinates from "./hooks/ShadowLightCoordinates";
+import Button from "./components/Button";
+import HexGrid from "./components/HexGrid";
 
 const Page = styled.div`
   position: relative;
@@ -17,66 +20,6 @@ const Page = styled.div`
 const Main = styled.div`
   color: white;
   padding-right: 32px;
-`;
-
-const Button = styled.button`
-  position: relative;
-  color: white;
-  border: 2px solid white;
-  border-radius: 5px;
-  background: none;
-  min-height: 48px;
-  font-weight: bold;
-  padding: 8px 16px;
-
-  animation: sliding 4s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-
-  &::after {
-    transition: all 0.3s;
-  }
-
-  &::before,
-  &::after {
-    background: #fff;
-    content: "";
-    position: absolute;
-    z-index: -1;
-  }
-
-  &:hover {
-    color: #121d3d;
-    transform: translate(0, -8px);
-  }
-
-  &::after {
-    height: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  &:hover::after {
-    height: 100%;
-  }
-
-  @keyframes sliding {
-    0% {
-      transform: translate(0, 200px);
-      opacity: 0;
-    }
-    30% {
-      transform: translate(0, 200px);
-      opacity: 0;
-    }
-    70% {
-      transform: translate(0, -8px);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(0, 0px);
-    }
-  }
 `;
 
 const RecIcon = styled.span`
@@ -96,35 +39,8 @@ const RecIcon = styled.span`
   }
 `;
 
-const words = "테라포밍 마스 전적 기록";
-const wordsub = "화성을 개척하는 쿠안들을 위한 안내서";
-
 function App() {
-  const [index, setIndex] = useState(0);
-  const [blink, setBlink] = useState(true);
-
   const [shadowX, shadowY] = useShadowLightCoordinates();
-
-  // typeWriter
-  useEffect(() => {
-    if (index === words.length + 1) {
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setIndex((prev) => prev + 1);
-    }, 50 + Math.floor(Math.random() * 150));
-
-    return () => clearTimeout(timeout);
-  }, [index]);
-
-  // blinker
-  useEffect(() => {
-    const timeout2 = setTimeout(() => {
-      setBlink((prev) => !prev);
-    }, 500);
-    return () => clearTimeout(timeout2);
-  }, [blink]);
 
   return (
     <>
@@ -158,39 +74,38 @@ function App() {
             flickerSpeed={"slowest"}
           />
         </div>
-
-        <img
-          style={{
-            position: "absolute",
-            bottom: "-15vh",
-            right: "-20vw",
-            width: "calc(200px + 70vw)",
-            transform: `translate(${shadowX * 2}em, ${shadowY * 2}em)`,
-          }}
-          src={tfm}
-          alt="image of mars"
-        />
+        <Mars />
       </div>
 
       <Page>
         <div
           style={{
+            position: "relative",
             border: "2px solid white",
             height: "100%",
             display: "flex",
             alignItems: "center",
           }}
         >
-          <Contents>
+          <div
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              left: 0,
+              top: 0,
+              overflow:"hidden",
+            }}
+          >
+            <HexGrid></HexGrid>
+          </div>
+          <Contents style={{ position: "relative" }}>
             <Main>
               <p>화성을 개척하는 쿠안들을 위한 안내서</p>
               <h1>
-                {words.substring(0, index)}
-                <span style={{ display: "inline-block", width: 0 }}>
-                  {blink ? "|" : ""}
-                </span>
+                <TypewriterWord word="테라포밍 마스 전적 기록" />
               </h1>
-              <Button>관측하기</Button>
+              <Button animate>관측하기</Button>
             </Main>
           </Contents>
           <small
