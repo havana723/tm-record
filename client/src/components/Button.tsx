@@ -7,12 +7,12 @@ interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   position: relative;
   color: white;
-  border: 2px solid white;
-  border-radius: 5px;
+  border: 1px solid white;
   background: none;
   min-height: 48px;
   font-weight: bold;
   padding: 8px 16px;
+  overflow: visible;
 
   ${({ animate }) => (animate ? "animation: sliding 4s ease-in-out;" : "")}
   transition: transform 0.3s ease-in-out;
@@ -26,7 +26,9 @@ const Button = styled.button<ButtonProps>`
     background: #fff;
     content: "";
     position: absolute;
+    inset: -1px;
     z-index: -1;
+    transform: scaleY(0);
   }
 
   &:hover {
@@ -35,14 +37,11 @@ const Button = styled.button<ButtonProps>`
   }
 
   &::after {
-    height: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
+    transform-origin: top;
   }
 
   &:hover::after {
-    height: 100%;
+    transform: scaleY(1);
   }
 
   @keyframes sliding {

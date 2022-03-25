@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Contents } from "./components/Contents";
 import Sparkles from "react-sparkle";
-import logo from "./logo.svg";
 import TypewriterWord from "./components/TypewriterWord";
 import Mars from "./components/Mars";
 import useShadowLightCoordinates from "./hooks/ShadowLightCoordinates";
@@ -94,10 +93,10 @@ function App() {
               height: "100%",
               left: 0,
               top: 0,
-              overflow:"hidden",
+              overflow: "hidden",
             }}
           >
-            <HexGrid></HexGrid>
+            <HexGrid />
           </div>
           <Contents style={{ position: "relative" }}>
             <Main>
