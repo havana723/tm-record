@@ -61,6 +61,7 @@ const Ranking = () => {
               display: "block",
               borderRadius: "50%",
             }}
+            className="animated rollIn"
           />
         </a>
         <div>
