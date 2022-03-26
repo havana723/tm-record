@@ -3,6 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import RankingList from "../components/RankingList";
 import ScrollAnimation from "react-animate-on-scroll";
+import logo from "../img/logo.png";
 
 interface RankingItem {
   rank: number;
@@ -51,6 +52,17 @@ const Ranking = () => {
   return state ? (
     <div style={{ background: "#ebf0f0", overflow: "hidden" }}>
       <div>
+        <a href="https://github.com/PngWnA/TFM.log">
+          <img
+            src={logo}
+            style={{
+              width: "200px",
+              margin: "50px auto",
+              display: "block",
+              borderRadius: "50%",
+            }}
+          />
+        </a>
         <div>
           <h1 style={{ textAlign: "center" }}>개척기록</h1>
         </div>

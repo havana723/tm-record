@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { rankingColor } from "../utils/RankColor";
 import { ratingColor } from "../utils/RatingColor";
 
-const UserContainer = styled.div`
+interface UserContainerProps {
+  color?: string;
+}
+
+const UserContainer = styled.div<UserContainerProps>`
   border-radius: 5px;
   background: white;
   width: min(80vw, 800px);
@@ -12,6 +16,16 @@ const UserContainer = styled.div`
   flex-wrap: wrap;
   margin: 12px auto;
   box-shadow: 3px 3px 5px lightgray;
+  &:hover {
+    ${({ color }) =>
+      color != "inherit"
+        ? `border: solid 2px ${color}`
+        : "border: solid 2px lightgray"};
+    ${({ color }) =>
+      color != "inherit"
+        ? `box-shadow: 3px 3px 10px -3px ${color}`
+        : "box-shadow: 3px 3px 5px lightgray"};
+  }
 `;
 
 interface UserDivProps {
@@ -37,7 +51,7 @@ const RankingList: React.FC<Props> = (props) => {
   const user = props.user;
   return (
     <>
-      <UserContainer>
+      <UserContainer color={rankingColor(user.rank)}>
         <UserDiv flexgrow={0.5} />
         <UserDiv flexgrow={0.5} style={{ color: rankingColor(user.rank) }}>
           <b>{user.rank}</b>
