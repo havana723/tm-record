@@ -8,6 +8,7 @@ import Mars from "../components/Mars";
 import useShadowLightCoordinates from "../hooks/ShadowLightCoordinates";
 import Button from "../components/Button";
 import HexGrid from "../components/HexGrid";
+import { Link } from "react-router-dom";
 
 const Page = styled.div`
   position: relative;
@@ -104,7 +105,11 @@ function Home() {
               <h1>
                 <TypewriterWord word="테라포밍 마스 전적 기록" />
               </h1>
-              <Button animate>관측하기</Button>
+              <Link to="/ranking">
+                <a>
+                  <Button animate>관측하기</Button>
+                </a>
+              </Link>
             </Main>
           </Contents>
           <small
