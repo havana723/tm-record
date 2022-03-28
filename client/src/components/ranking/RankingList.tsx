@@ -11,6 +11,10 @@ interface RankingItem {
 
 const baseURL = process.env.REACT_APP_API_ENDPOINT;
 
+const RankingListContainer = styled.div`
+  flex: 0 0 80%;
+`;
+
 const TitleContainer = styled.div`
   width: min(80vw, 800px);
   height: 64px;
@@ -36,7 +40,9 @@ const RankingList: React.FC<Props> = (props) => {
   const ranking = props.ranking;
   return (
     <>
-      <div style={{ background: "#ebf0f0", overflow: "hidden" }}>
+      <RankingListContainer
+        style={{ background: "#ebf0f0", overflow: "hidden" }}
+      >
         <div>
           <TitleContainer>
             <TitleDiv flexgrow={0.5} />
@@ -63,8 +69,7 @@ const RankingList: React.FC<Props> = (props) => {
             </ScrollAnimation>
           ))}
         </div>
-      </div>
-      ;
+      </RankingListContainer>
     </>
   );
 };
