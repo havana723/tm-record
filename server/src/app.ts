@@ -3,7 +3,7 @@ import express from 'express'
 import { prevSeasons } from './logs/prevSeasons'
 
 const app = express()
-const port = 3001
+const port = process.env.PORT ?? 3001
 
 app.get('/api/ranking', async (req, res) => {
   const ranking = await axios.get(
