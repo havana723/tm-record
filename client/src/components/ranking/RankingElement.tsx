@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { rankingColor } from "../utils/RankColor";
-import { ratingColor } from "../utils/RatingColor";
+import { rankingColor } from "../../utils/RankColor";
+import { ratingColor } from "../../utils/RatingColor";
 
 interface UserContainerProps {
   color?: string;
@@ -47,7 +47,7 @@ interface Props {
   user: RankingItem;
 }
 
-const RankingList: React.FC<Props> = (props) => {
+const RankingElement: React.FC<Props> = (props) => {
   const user = props.user;
   return (
     <>
@@ -66,4 +66,4 @@ const RankingList: React.FC<Props> = (props) => {
   );
 };
 
-export default RankingList;
+export default RankingElement;

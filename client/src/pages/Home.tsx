@@ -1,14 +1,13 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Contents } from "../components/Contents";
-import Sparkles from "react-sparkle";
-import TypewriterWord from "../components/TypewriterWord";
-import Mars from "../components/Mars";
-import useShadowLightCoordinates from "../hooks/ShadowLightCoordinates";
-import Button from "../components/Button";
-import HexGrid from "../components/HexGrid";
 import { Link } from "react-router-dom";
+import Sparkles from "react-sparkle";
+import styled from "styled-components";
+import Button from "../components/Button";
+import { Contents } from "../components/Contents";
+import HexGrid from "../components/home/HexGrid";
+import Mars from "../components/home/Mars";
+import TypewriterWord from "../components/home/TypewriterWord";
+import useShadowLightCoordinates from "../hooks/ShadowLightCoordinates";
 
 const Page = styled.div`
   position: relative;

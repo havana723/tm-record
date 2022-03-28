@@ -1,5 +1,6 @@
 import axios from 'axios'
-import express, { Router } from 'express'
+import express from 'express'
+import { prevSeasons } from './logs/prevSeasons'
 
 const app = express()
 const port = 3001
@@ -21,7 +22,7 @@ app.get('/api/ranking', async (req, res) => {
       name,
     }))
 
-  res.send({ ranking: data })
+  res.send({ seasons: [...prevSeasons.seasons, { ranking: data }] })
 })
 
 app.listen(port, () => {
